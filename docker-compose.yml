@@ -1,0 +1,15 @@
+version: "2"
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: sample
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+
+volumes:
+  db-data:
